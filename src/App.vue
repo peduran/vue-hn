@@ -1,20 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <ul>
+      <li v-for="story in stories" v-bind:key="story.id">{{ story.title }}</li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { getFullTopStories, Story } from "./api";
 
-@Component({
-  components: {
-    HelloWorld
+import Vue from "vue";
+
+interface App {
+  msg: string;
+  stories: Story[];
+}
+
+export default Vue.extend<App, {}, {}, {}>({
+  data() {
+    return {
+      msg: "",
+      stories: []
+    };
+  },
+  mounted() {
+    getFullTopStories().then(_stories => {
+      this.stories = _stories;
+    });
   }
-})
-export default class App extends Vue {}
+});
 </script>
 
 <style>
