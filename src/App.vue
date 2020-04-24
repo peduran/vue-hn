@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="story in stories" v-bind:key="story.id">{{ story.title }}</li>
-    </ul>
+    <hn-header />
+    <div v-if="stories.length > 0">
+      <headline v-for="(story, i) in stories" :key="story.id" :story="story" :rank="i+1" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { getFullTopStories, Story } from "./api";
+import Headline from "./components/Headline.vue";
+import HnHeader from "./components/HnHeader.vue";
 
 import Vue from "vue";
 
 interface App {
   msg: string;
-  stories: Story[];
+  stories: (Story & { ordinalId: number })[];
 }
 
 export default Vue.extend<App, {}, {}, {}>({
@@ -25,19 +28,19 @@ export default Vue.extend<App, {}, {}, {}>({
   },
   mounted() {
     getFullTopStories().then(_stories => {
-      this.stories = _stories;
+      this.stories = _stories.map((s, i) => ({ ordinalId: 1, ...s }));
     });
+  },
+  components: {
+    Headline,
+    HnHeader
   }
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: #f6f6ef;
   margin-top: 60px;
 }
 </style>
