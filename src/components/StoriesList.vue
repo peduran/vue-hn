@@ -1,6 +1,7 @@
 <template>
   <div v-if="stories.length > 0">
     <headline
+      class="headline"
       v-for="(story, i) in stories"
       :key="story.id"
       :story="story"
@@ -24,4 +25,8 @@ export default Vue.extend({
   }
 });
 </script>
-<style></style>
+<style scoped>
+.headline {
+    padding: 3pt
+}
+</style>

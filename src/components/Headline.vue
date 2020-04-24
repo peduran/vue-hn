@@ -1,6 +1,9 @@
 <template>
   <div class="headline">
-    <div class="rank">{{ rank }}. ▲</div>
+    <div class="upvote-widget">
+      <div class="rank">{{ rank }}.</div>
+      <div class="arrow">▲</div>
+    </div>
     <div class="text">
       <div class="title">
         {{ story.title }}
@@ -9,7 +12,9 @@
       <div class="subtext">
         {{ story.score }} points by {{ story.by }} {{ formattedTime }} hours ago
         | hide |
-        <a :href="commentURL">{{ story.kids.length }} comments</a>
+        <a
+          :href="commentURL"
+        >{{ story.kids.length }} comments</a>
       </div>
     </div>
   </div>
@@ -60,8 +65,16 @@ a {
   text-decoration: none;
 }
 
+.upvote-widget {
+  display: flex;
+  flex-direction: row;
+  padding-right: 0.25rem;
+}
+
 .rank {
   color: #828282;
-  min-width: 3rem;
+  min-width: 2em;
+  text-align: end;
+  padding-right: 0.25rem;
 }
 </style>
