@@ -2,8 +2,16 @@
   <div class="headline">
     <div class="rank">{{rank}}. ▲</div>
     <div class="text">
-      <div class="title">{{story.title}} ({{getDomain}})</div>
-      <div class="subtext">{{story.score}} points by {{story.by}} {{formattedTime}} hours ago</div>
+      <div class="title">
+        {{story.title}}
+        <span class="subtext">({{domain}})</span>
+      </div>
+      <div class="subtext">
+        {{story.score}} points by {{story.by}} {{formattedTime}} hours ago | hide |
+        <a
+          :href="commentURL"
+        >{{story.kids.length}} comments</a>
+      </div>
     </div>
   </div>
 </template>
@@ -23,12 +31,13 @@ export default Vue.extend<{}, {}, {}, Props>({
     formattedTime() {
       return new Date(this.story.time * 1000).getHours();
     },
-    getDomain(){
-      const expr = /(?:^https?:\/\/)?(.*?)\/|$/gm
-      const result = expr.exec(this.story.url)
-      return result ? result[1] : ''
-
-
+    domain() {
+      const expr = /(?:^https?:\/\/)?(.*?)\/|$/gm;
+      const result = expr.exec(this.story.url);
+      return result ? result[1] : "";
+    },
+    commentURL() {
+      return `https://news.ycombinator.com/item?id=${this.story.id}`;
     }
   }
 });
@@ -43,11 +52,13 @@ export default Vue.extend<{}, {}, {}, Props>({
   flex-direction: column;
 }
 .title {
-  font-size: 11pt
+  font-size: 11pt;
 }
-.subtext {
+.subtext,
+a {
   font-size: 9pt;
-  color: #828282
+  color: #828282;
+  text-decoration: none;
 }
 
 .rank {
