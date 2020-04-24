@@ -1,16 +1,15 @@
 <template>
   <div class="headline">
-    <div class="rank">{{rank}}. ▲</div>
+    <div class="rank">{{ rank }}. ▲</div>
     <div class="text">
       <div class="title">
-        {{story.title}}
-        <span class="subtext">({{domain}})</span>
+        {{ story.title }}
+        <span class="subtext">({{ domain }})</span>
       </div>
       <div class="subtext">
-        {{story.score}} points by {{story.by}} {{formattedTime}} hours ago | hide |
-        <a
-          :href="commentURL"
-        >{{story.kids.length}} comments</a>
+        {{ story.score }} points by {{ story.by }} {{ formattedTime }} hours ago
+        | hide |
+        <a :href="commentURL">{{ story.kids.length }} comments</a>
       </div>
     </div>
   </div>

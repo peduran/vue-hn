@@ -1,15 +1,13 @@
 <template>
   <div id="app">
     <hn-header />
-    <div v-if="stories.length > 0">
-      <headline v-for="(story, i) in stories" :key="story.id" :story="story" :rank="i+1" />
-    </div>
+    <stories-list :stories="stories" />
   </div>
 </template>
 
 <script lang="ts">
 import { getFullTopStories, Story } from "./api";
-import Headline from "./components/Headline.vue";
+import StoriesList from "./components/StoriesList.vue";
 import HnHeader from "./components/HnHeader.vue";
 
 import Vue from "vue";
@@ -32,7 +30,7 @@ export default Vue.extend<App, {}, {}, {}>({
     });
   },
   components: {
-    Headline,
+    StoriesList,
     HnHeader
   }
 });

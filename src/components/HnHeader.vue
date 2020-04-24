@@ -8,6 +8,6 @@ export default {};
 
 <style scoped>
 div {
-  background-color: #ff6600
+  background-color: #ff6600;
 }
 </style>
