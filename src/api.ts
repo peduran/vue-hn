@@ -11,11 +11,13 @@ export interface Story {
   id: string;
   kids: StoryIds;
   score: number;
-  time: Date;
+  time: number
   title: string;
   type: string;
   url: string;
 }
+
+
 
 const getTopStories = async (): Promise<StoryIds> =>
   (await axios.get<StoryIds>(topStoriesURI)).data;

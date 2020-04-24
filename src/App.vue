@@ -41,6 +41,8 @@ export default Vue.extend<App, {}, {}, {}>({
 <style>
 #app {
   background-color: #f6f6ef;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Geneva, sans-serif;
 }
 </style>
