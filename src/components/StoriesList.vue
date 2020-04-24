@@ -17,7 +17,7 @@ import { Story } from "../api";
 export default Vue.extend({
   props: {
     stories: {
-      type: Object as PropType<Story[]>
+      type: Array as PropType<Story[]>
     }
   },
   components: {

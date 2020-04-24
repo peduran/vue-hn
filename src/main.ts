@@ -1,16 +1,14 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
+import StoryListPage from '@/components/pages/StoryListPage.vue'
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
-const Foo = { template: "<div>foo</div>" };
-const Bar = { template: "<div>bar</div>" };
 const routes = [
-  { path: "/foo", component: Foo },
-  { path: "/bar", component: Bar },
+  { path: "/", component: StoryListPage },
 ];
 
 const router = new VueRouter({

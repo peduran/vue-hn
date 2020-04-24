@@ -6,7 +6,7 @@
     </div>
     <div class="text">
       <div class="title">
-        {{ story.title }}
+        <a :href="story.url">{{ story.title }}</a>
         <span class="subtext">({{ domain }})</span>
       </div>
       <div class="subtext">
@@ -51,6 +51,7 @@ export default Vue.extend<{}, {}, {}, Props>({
 .headline {
   display: flex;
   flex-direction: row;
+  text-decoration: none;
 }
 .text {
   flex-direction: column;
@@ -58,11 +59,9 @@ export default Vue.extend<{}, {}, {}, Props>({
 .title {
   font-size: 11pt;
 }
-.subtext,
-a {
+.subtext {
   font-size: 9pt;
   color: #828282;
-  text-decoration: none;
 }
 
 .upvote-widget {
