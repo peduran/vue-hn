@@ -7,7 +7,7 @@
     <div class="text">
       <div class="title">
         <a :href="story.url">{{ story.title }}</a>
-        <span class="subtext">({{ domain }})</span>
+        <span class="subtext"> ({{ domain }})</span>
       </div>
       <div class="subtext">
         {{ story.score }} points by {{ story.by }} {{ formattedTime }} hours ago
@@ -51,13 +51,13 @@ export default Vue.extend<{}, {}, {}, Props>({
 .headline {
   display: flex;
   flex-direction: row;
-  text-decoration: none;
 }
 .text {
   flex-direction: column;
 }
 .title {
   font-size: 11pt;
+  color: #000;
 }
 .subtext {
   font-size: 9pt;
@@ -75,5 +75,10 @@ export default Vue.extend<{}, {}, {}, Props>({
   min-width: 2em;
   text-align: end;
   padding-right: 0.25rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
